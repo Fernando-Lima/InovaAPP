@@ -6,11 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.fernando.inova.R;
 
-public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecycleViewMainAdapter.Item>{
+public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Context context;
     String[] items;
 
@@ -29,9 +30,18 @@ public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecycleViewMain
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Item item, int position) {
-        ((Item)item).tvItem.setText(items[position]);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int i) {
+      if(holder instanceof Item){
+          final Item item = (Item) holder;
+          item.tvNome.setText(items[i]);
+
+      }
     }
+
+   // @Override
+    //public void onBindViewHolder(@NonNull Item item, int position) {
+     //   ((Item)item).tvItem.setText(items[position]);
+    //}
 
     @Override
     public int getItemCount() {
@@ -39,15 +49,17 @@ public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecycleViewMain
     }
 
     public static class Item extends RecyclerView.ViewHolder{
-        private TextView tvItem;
+        private RelativeLayout relativeLayout;
         private View mView;
+        private TextView tvNome;
 
 
         public Item(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
 
-            tvItem = (TextView)itemView.findViewById(R.id.item);
+            relativeLayout = itemView.findViewById(R.id.rela_round);
+            tvNome = (TextView)itemView.findViewById(R.id.tv_recycler_item_1);
         }
     }
 }
