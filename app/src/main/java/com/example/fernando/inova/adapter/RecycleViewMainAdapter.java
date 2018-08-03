@@ -30,18 +30,12 @@ public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
       if(holder instanceof Item){
           final Item item = (Item) holder;
-          item.tvNome.setText(items[i]);
-
+          item.tvNome.setText(items[position]);
       }
     }
-
-   // @Override
-    //public void onBindViewHolder(@NonNull Item item, int position) {
-     //   ((Item)item).tvItem.setText(items[position]);
-    //}
 
     @Override
     public int getItemCount() {
@@ -49,7 +43,7 @@ public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     public static class Item extends RecyclerView.ViewHolder{
-        private RelativeLayout relativeLayout;
+        private RelativeLayout icone;
         private View mView;
         private TextView tvNome;
 
@@ -58,7 +52,7 @@ public class RecycleViewMainAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(itemView);
             mView = itemView;
 
-            relativeLayout = itemView.findViewById(R.id.rela_round);
+            icone = itemView.findViewById(R.id.rela_round);
             tvNome = (TextView)itemView.findViewById(R.id.tv_recycler_item_1);
         }
     }

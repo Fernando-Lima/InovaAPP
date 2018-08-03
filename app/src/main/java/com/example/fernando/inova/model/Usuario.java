@@ -9,7 +9,7 @@ public class Usuario {
     private String nome;
     private String cpf;
     private String email;
-    private Integer celular;
+    private Long celular;
 
     public Long getCodigo() {
         return codigo;
@@ -43,11 +43,19 @@ public class Usuario {
         this.email = email;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
+        this.celular = celular;
+    }
+
+    public Usuario (Long codigo, String nome, String cpf, String email, Long celular){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
         this.celular = celular;
     }
 }
