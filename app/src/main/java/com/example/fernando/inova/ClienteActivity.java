@@ -1,5 +1,6 @@
 package com.example.fernando.inova;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,10 @@ public class ClienteActivity extends Debug {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
+
+        Intent it = new Intent();
+        it.putExtra("key","teste de retorno Cliente");
+        setResult(RESULT_OK,it);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycleView_cliente);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

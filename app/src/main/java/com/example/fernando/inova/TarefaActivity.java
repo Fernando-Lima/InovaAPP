@@ -4,12 +4,14 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,6 +21,7 @@ public class TarefaActivity extends Debug {
     private EditText edtDate, edtTime, edtCliente, edtSetor, edtDesricao;
     private int year, month, day, hour, min;
     private ImageButton imgRemoveCliente, imgRemoveSetor;
+    private int REQUEST_CODE = 1;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm ");
@@ -98,13 +101,24 @@ public class TarefaActivity extends Debug {
     }
     public void buscarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
-        startActivity(it);
+
+        startActivityForResult(it, REQUEST_CODE);
         showImg();
     }
 
     public void buscarSetor(View view){
         Intent it = new Intent(TarefaActivity.this, SetorActivity.class);
         startActivity(it);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            if(resultCode == RESULT_OK);
+            String result = data.getStringExtra("key");
+            Toast.makeText(TarefaActivity.this, result,Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void showImg(){
