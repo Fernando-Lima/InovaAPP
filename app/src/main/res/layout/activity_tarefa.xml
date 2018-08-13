@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_date_tarefa"
-
+            android:onClick="showDate"
             android:ems="10"
             android:hint="Adicionar data"
             android:inputType="none" />
@@ -53,6 +53,48 @@
 
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_cliente_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cliente" />
+
+    <EditText
+        android:id="@+id/edt_cliente_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:onClick="buscarCliente"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tv_setor_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Setor" />
+
+    <EditText
+        android:id="@+id/edt_setor_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:onClick="buscarSetor"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tv_descricao_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição" />
+
+    <EditText
+        android:id="@+id/edt_descricao_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="O que foi feito?"/>
 
 
 </LinearLayout>

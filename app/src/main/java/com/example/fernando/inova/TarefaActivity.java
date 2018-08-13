@@ -2,6 +2,7 @@ package com.example.fernando.inova;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -75,7 +76,6 @@ public class TarefaActivity extends Debug {
         edtTime.setInputType(InputType.TYPE_NULL);
         edtCliente.setInputType(InputType.TYPE_NULL);
         edtSetor.setInputType(InputType.TYPE_NULL);
-        edtDesricao.setInputType(InputType.TYPE_NULL);
     }
 
     public void findViewById(){
@@ -84,5 +84,14 @@ public class TarefaActivity extends Debug {
         edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
         edtSetor = (EditText)findViewById(R.id.edt_setor_tarefa);
         edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
+    }
+    public void buscarCliente(View view){
+        Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
+        startActivity(it);
+    }
+
+    public void buscarSetor(View view){
+        Intent it = new Intent(TarefaActivity.this, SetorActivity.class);
+        startActivity(it);
     }
 }
