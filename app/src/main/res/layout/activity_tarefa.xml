@@ -8,21 +8,51 @@
     android:layout_margin="6dp"
     tools:context="com.example.fernando.inova.TarefaActivity">
 
-    <TextView
-        android:id="@+id/tv_date_tarefa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data e hora"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp" />
-
-    <EditText
-        android:id="@+id/edt_date_tarefa"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="none"
-        android:hint="Adicionar data"
-        />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_date_tarefa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="2dp" />
+
+        <EditText
+            android:id="@+id/edt_date_tarefa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_date_tarefa"
+
+            android:ems="10"
+            android:hint="Adicionar data"
+            android:inputType="none" />
+
+        <TextView
+            android:id="@+id/tv_time_tarefa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/edt_date_tarefa"
+            android:text="Hora"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="2dp" />
+        <EditText
+            android:id="@+id/edt_time_tarefa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/edt_date_tarefa"
+            android:layout_alignBottom="@+id/edt_date_tarefa"
+            android:layout_toEndOf="@+id/edt_date_tarefa"
+            android:ems="10"
+            android:onClick="showTime"
+            android:hint="Adicionar hora"
+            android:inputType="none" />
+
+
+    </RelativeLayout>
+
 
 </LinearLayout>
