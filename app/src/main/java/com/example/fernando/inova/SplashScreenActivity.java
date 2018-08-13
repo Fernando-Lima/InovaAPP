@@ -14,7 +14,7 @@ public class SplashScreenActivity extends Debug {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                showLogin();
+                showMain();
             }
         },1000);
     }

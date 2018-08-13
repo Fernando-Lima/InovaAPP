@@ -38,7 +38,6 @@ public class TarefaActivity extends Debug {
                 showDate();
             }
         });
-
     }
 
     public void showDate(){
