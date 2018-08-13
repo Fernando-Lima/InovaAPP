@@ -15,7 +15,7 @@ import java.util.Calendar;
 
 public class TarefaActivity extends Debug {
 
-    private EditText edtDate, edtTime;
+    private EditText edtDate, edtTime, edtCliente, edtSetor, edtDesricao;
     private int year, month, day, hour, min;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -25,10 +25,9 @@ public class TarefaActivity extends Debug {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarefa);
-        edtDate = (EditText)findViewById(R.id.edt_date_tarefa);
-        edtDate.setInputType(InputType.TYPE_NULL);
-        edtTime = (EditText)findViewById(R.id.edt_time_tarefa);
-        edtTime.setInputType(InputType.TYPE_NULL);
+
+        findViewById();
+        hideKeyboard();
 
         //Abre o dialog do calendar com a data atual
         calendar = Calendar.getInstance();
@@ -39,16 +38,9 @@ public class TarefaActivity extends Debug {
         //Abre o dialog do Time com a hora atual
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
-
-        edtDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDate();
-            }
-        });
     }
 
-    public void showDate(){
+    public void showDate(View view){
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,mDateSetListener, year, month, day);
         datePickerDialog.show();
     }
@@ -78,4 +70,19 @@ public class TarefaActivity extends Debug {
             edtTime.setText(time);
         }
     };
+    public void hideKeyboard(){
+        edtDate.setInputType(InputType.TYPE_NULL);
+        edtTime.setInputType(InputType.TYPE_NULL);
+        edtCliente.setInputType(InputType.TYPE_NULL);
+        edtSetor.setInputType(InputType.TYPE_NULL);
+        edtDesricao.setInputType(InputType.TYPE_NULL);
+    }
+
+    public void findViewById(){
+        edtDate = (EditText)findViewById(R.id.edt_date_tarefa);
+        edtTime = (EditText)findViewById(R.id.edt_time_tarefa);
+        edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
+        edtSetor = (EditText)findViewById(R.id.edt_setor_tarefa);
+        edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
+    }
 }
