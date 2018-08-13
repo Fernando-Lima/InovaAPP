@@ -8,9 +8,9 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TimePicker;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -18,6 +18,7 @@ public class TarefaActivity extends Debug {
 
     private EditText edtDate, edtTime, edtCliente, edtSetor, edtDesricao;
     private int year, month, day, hour, min;
+    private ImageButton imgRemoveCliente, imgRemoveSetor;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm ");
@@ -29,6 +30,7 @@ public class TarefaActivity extends Debug {
 
         findViewById();
         hideKeyboard();
+        showImg();
 
         //Abre o dialog do calendar com a data atual
         calendar = Calendar.getInstance();
@@ -39,6 +41,12 @@ public class TarefaActivity extends Debug {
         //Abre o dialog do Time com a hora atual
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showImg();
     }
 
     public void showDate(View view){
@@ -84,14 +92,39 @@ public class TarefaActivity extends Debug {
         edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
         edtSetor = (EditText)findViewById(R.id.edt_setor_tarefa);
         edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
+
+        imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
+        imgRemoveSetor = (ImageButton)findViewById(R.id.img_remove_setor_tarefa);
     }
     public void buscarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
         startActivity(it);
+        showImg();
     }
 
     public void buscarSetor(View view){
         Intent it = new Intent(TarefaActivity.this, SetorActivity.class);
         startActivity(it);
+    }
+
+    public void showImg(){
+        if(edtCliente.getText().length()==0){
+           imgRemoveCliente.setVisibility(View.INVISIBLE);
+        }else{
+            imgRemoveCliente.setVisibility(View.VISIBLE);
+        }
+        if(edtSetor.getText().length()==0){
+            imgRemoveSetor.setVisibility(View.INVISIBLE);
+        }else{
+            imgRemoveSetor.setVisibility(View.VISIBLE);
+        }
+    }
+    public void clearTvCliente(View view){
+        edtCliente.setText("");
+        imgRemoveCliente.setVisibility(View.INVISIBLE);
+    }
+    public void clearTvSetor(View view){
+        edtSetor.setText("");
+        imgRemoveSetor.setVisibility(View.INVISIBLE);
     }
 }
