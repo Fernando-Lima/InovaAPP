@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Naturally Flavored Fruit &amp; Herb Detox Water"
+        android:id="@+id/tv_recycler_item_nome_cliente"
+        android:textSize="16sp"
+        android:layout_marginLeft="15dp"
+        android:paddingTop="10dp"
+        android:ellipsize="marquee"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="This tasty brew only takes ten minutes to prepare."
+        android:id="@+id/txtdesc"
+        android:layout_marginRight="15dp"
+        android:lines="2"
+        android:paddingBottom="10dp"
+        android:ellipsize="end"
+        android:layout_below="@+id/tv_recycler_item_nome_cliente"
+        android:layout_alignLeft="@+id/tv_recycler_item_nome_cliente"
+        android:layout_alignStart="@+id/tv_recycler_item_nome_cliente" />
+
+</RelativeLayout>

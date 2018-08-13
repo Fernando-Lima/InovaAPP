@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-        recyclerView = (RecyclerView)findViewById(R.id.recycleView);
+        recyclerView = (RecyclerView)findViewById(R.id.recycleView_main);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new RecycleViewMainAdapter(this,items));
 
