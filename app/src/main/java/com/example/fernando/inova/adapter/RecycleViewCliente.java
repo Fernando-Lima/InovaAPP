@@ -1,6 +1,7 @@
 package com.example.fernando.inova.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.fernando.inova.R;
+import com.example.fernando.inova.SetorActivity;
+
 /**
  * Created by fernando on 13/08/18.
  */
@@ -36,8 +39,13 @@ public class RecycleViewCliente extends RecyclerView.Adapter<RecyclerView.ViewHo
         if(viewHolder instanceof Item){
             final Item item = (Item) viewHolder;
             item.tvNome.setText(items[position]);
-
-            //ação do click do item da lista
+            item.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, SetorActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

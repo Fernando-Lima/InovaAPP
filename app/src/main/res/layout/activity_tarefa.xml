@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="buscarCliente"
+            android:onClick="selecionarCliente"
             android:inputType="textPersonName" />
 
         <ImageButton
@@ -86,31 +86,31 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_setor_tarefa"
+        android:id="@+id/tv_tipo_tarefa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Setor" />
+        android:text="Tipo de atividade" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edt_setor_tarefa"
+            android:id="@+id/edt_tipo_tarefa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="buscarSetor"
+            android:onClick="selecionarTipo"
             android:inputType="textPersonName" />
 
         <ImageButton
-            android:id="@+id/img_remove_setor_tarefa"
+            android:id="@+id/img_remove_tipo_tarefa"
             style="@android:style/Widget.Material.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:onClick="clearTvSetor"
+            android:onClick="clearTvTipo"
             android:background="@android:drawable/ic_menu_close_clear_cancel"
             android:backgroundTint="@color/black" />
 
@@ -128,7 +128,20 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="O que foi feito?"/>
+        android:hint="O que será feito?"/>
+    <TextView
+        android:id="@+id/tv_situação_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Situação" />
+
+    <EditText
+        android:id="@+id/edt_situacao_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="AGENDADA"/>
 
 
 </LinearLayout>

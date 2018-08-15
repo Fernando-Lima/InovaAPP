@@ -18,9 +18,10 @@ import java.util.Calendar;
 
 public class TarefaActivity extends Debug {
 
-    private EditText edtDate, edtTime, edtCliente, edtSetor, edtDesricao;
+    private EditText edtDate, edtTime, edtCliente,
+            edtTipo, edtDesricao, edtSituacao;
     private int year, month, day, hour, min;
-    private ImageButton imgRemoveCliente, imgRemoveSetor;
+    private ImageButton imgRemoveCliente, imgRemoveTipo;
     private int REQUEST_CODE = 1;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -46,6 +47,7 @@ public class TarefaActivity extends Debug {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
         setTime();
+        edtSituacao.setEnabled(false);
     }
 
     @Override
@@ -96,18 +98,19 @@ public class TarefaActivity extends Debug {
         edtDate.setInputType(InputType.TYPE_NULL);
         edtTime.setInputType(InputType.TYPE_NULL);
         edtCliente.setInputType(InputType.TYPE_NULL);
-        edtSetor.setInputType(InputType.TYPE_NULL);
+        edtTipo.setInputType(InputType.TYPE_NULL);
     }
 
     public void findViewById(){
         edtDate = (EditText)findViewById(R.id.edt_date_tarefa);
         edtTime = (EditText)findViewById(R.id.edt_time_tarefa);
         edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
-        edtSetor = (EditText)findViewById(R.id.edt_setor_tarefa);
+        edtTipo = (EditText)findViewById(R.id.edt_tipo_tarefa);
         edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
+        edtSituacao = (EditText)findViewById(R.id.edt_situacao_tarefa);
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
-        imgRemoveSetor = (ImageButton)findViewById(R.id.img_remove_setor_tarefa);
+        imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
     }
     public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
@@ -115,9 +118,8 @@ public class TarefaActivity extends Debug {
         showImg();
     }
 
-    public void selecionarSetor(View view){
-        Intent it = new Intent(TarefaActivity.this, SetorActivity.class);
-        startActivity(it);
+    public void selecionarTipo(View view){
+
     }
 
     //espera um resultado de outra activity
@@ -134,15 +136,13 @@ public class TarefaActivity extends Debug {
     public void showImg(){
         if(edtCliente.getText().length()==0){
            imgRemoveCliente.setVisibility(View.INVISIBLE);
-           edtSetor.setEnabled(false);
         }else{
             imgRemoveCliente.setVisibility(View.VISIBLE);
-            edtSetor.setEnabled(true);
         }
-        if(edtSetor.getText().length()==0){
-            imgRemoveSetor.setVisibility(View.INVISIBLE);
+        if(edtTipo.getText().length()==0){
+            imgRemoveTipo.setVisibility(View.INVISIBLE);
         }else{
-            imgRemoveSetor.setVisibility(View.VISIBLE);
+            imgRemoveTipo.setVisibility(View.VISIBLE);
         }
     }
     public void clearTvCliente(View view){
@@ -150,9 +150,9 @@ public class TarefaActivity extends Debug {
         // limpar o id do cliente também
         imgRemoveCliente.setVisibility(View.INVISIBLE);
     }
-    public void clearTvSetor(View view){
-        edtSetor.setText("");
-        // limpar o id do setor também
-        imgRemoveSetor.setVisibility(View.INVISIBLE);
+    public void clearTvTipo(View view){
+        edtTipo.setText("");
+        // limpar o id do tipo também
+        imgRemoveTipo.setVisibility(View.INVISIBLE);
     }
 }
