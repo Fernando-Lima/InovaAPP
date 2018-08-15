@@ -65,21 +65,21 @@ public class TarefaActivity extends Debug {
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-            calendar.set(Calendar.YEAR,year);
-            calendar.set(Calendar.MONTH,month);
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-            String date = simpleDateFormat.format(calendar.getTime());
-            edtDate.setText(date);
+        calendar.set(Calendar.YEAR,year);
+        calendar.set(Calendar.MONTH,month);
+        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        String date = simpleDateFormat.format(calendar.getTime());
+        edtDate.setText(date);
         }
     };
 
     private TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker timePicker, int hour, int min) {
-            calendar.set(Calendar.HOUR_OF_DAY, hour);
-            calendar.set(Calendar.MINUTE, min);
-            String time = timeFormat.format(calendar.getTime());
-            edtTime.setText(time);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, min);
+        String time = timeFormat.format(calendar.getTime());
+        edtTime.setText(time);
         }
     };
     public void hideKeyboard(){
@@ -101,7 +101,6 @@ public class TarefaActivity extends Debug {
     }
     public void buscarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
-
         startActivityForResult(it, REQUEST_CODE);
         showImg();
     }
@@ -135,10 +134,12 @@ public class TarefaActivity extends Debug {
     }
     public void clearTvCliente(View view){
         edtCliente.setText("");
+        // limpar o id do cliente também
         imgRemoveCliente.setVisibility(View.INVISIBLE);
     }
     public void clearTvSetor(View view){
         edtSetor.setText("");
+        // limpar o id do setor também
         imgRemoveSetor.setVisibility(View.INVISIBLE);
     }
 }
