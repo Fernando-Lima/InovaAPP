@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,8 +20,11 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class TarefaActivity extends Debug {
+public class TarefaActivity extends Debug implements View.OnClickListener {
 
+    private Boolean isFabOpen = false;
+    private FloatingActionButton fab, fab1, fab2;
+    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
     private EditText edtDate, edtTime, edtCliente,
             edtTipo, edtDesricao, edtSituacao;
     private int year, month, day, hour, min;
@@ -50,13 +56,54 @@ public class TarefaActivity extends Debug {
         setTime();
         edtSituacao.setEnabled(false);
 
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab_tarefa);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(TarefaActivity.this,"Click",Toast.LENGTH_SHORT).show();
-            }
-        });
+        fab.setOnClickListener(this);
+        fab1.setOnClickListener(this);
+        fab2.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab_tarefa:
+                animateFAB();
+                Log.i("fab","clicou em fab");
+                break;
+            case R.id.fab_tarefa_1:
+
+                Log.d("fab", "Fab 1");
+                break;
+            case R.id.fab_tarefa_2:
+
+                Log.d("fab", "Fab 2");
+                break;
+        }
+    }
+
+    public void animateFAB() {
+
+        if (isFabOpen) {
+
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj", "open");
+
+        }
     }
 
     @Override
@@ -120,6 +167,15 @@ public class TarefaActivity extends Debug {
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
         imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
+
+        fab = (FloatingActionButton)findViewById(R.id.fab_tarefa);
+        fab1 = (FloatingActionButton)findViewById(R.id.fab_tarefa_1);
+        fab2 = (FloatingActionButton)findViewById(R.id.fab_tarefa_2);
+
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
     }
     public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
