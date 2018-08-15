@@ -155,4 +155,7 @@ public class TarefaActivity extends Debug {
         // limpar o id do tipo também
         imgRemoveTipo.setVisibility(View.INVISIBLE);
     }
+    public void goMaps(View view){
+        //abrir google maps com o endereço de destino
+    }
 }

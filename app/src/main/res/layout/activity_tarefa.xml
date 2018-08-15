@@ -143,5 +143,36 @@
         android:inputType="textPersonName"
         android:hint="AGENDADA"/>
 
+    <TextView
+        android:id="@+id/tv_endereco_tarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Endereco" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/img_local_tarefa"
+            style="@android:style/Widget.Material.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:drawable/ic_menu_mylocation"
+            android:backgroundTint="@color/black"
+            android:onClick="goMaps" />
+
+        <EditText
+            android:id="@+id/edt_endereco_tarefa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Localização"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
