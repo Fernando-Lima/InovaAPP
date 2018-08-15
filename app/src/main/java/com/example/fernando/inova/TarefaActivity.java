@@ -40,10 +40,12 @@ public class TarefaActivity extends Debug {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        setDate();
 
         //Abre o dialog do Time com a hora atual
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
+        setTime();
     }
 
     @Override
@@ -68,18 +70,26 @@ public class TarefaActivity extends Debug {
         calendar.set(Calendar.YEAR,year);
         calendar.set(Calendar.MONTH,month);
         calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        String date = simpleDateFormat.format(calendar.getTime());
-        edtDate.setText(date);
+        setDate();
         }
     };
+
+    public void setDate(){
+        String date = simpleDateFormat.format(calendar.getTime());
+        edtDate.setText(date);
+    }
+
+    public void setTime(){
+        String time = timeFormat.format(calendar.getTime());
+        edtTime.setText(time);
+    }
 
     private TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker timePicker, int hour, int min) {
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, min);
-        String time = timeFormat.format(calendar.getTime());
-        edtTime.setText(time);
+        setTime();
         }
     };
     public void hideKeyboard(){
@@ -99,17 +109,18 @@ public class TarefaActivity extends Debug {
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
         imgRemoveSetor = (ImageButton)findViewById(R.id.img_remove_setor_tarefa);
     }
-    public void buscarCliente(View view){
+    public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
         startActivityForResult(it, REQUEST_CODE);
         showImg();
     }
 
-    public void buscarSetor(View view){
+    public void selecionarSetor(View view){
         Intent it = new Intent(TarefaActivity.this, SetorActivity.class);
         startActivity(it);
     }
 
+    //espera um resultado de outra activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,8 +134,10 @@ public class TarefaActivity extends Debug {
     public void showImg(){
         if(edtCliente.getText().length()==0){
            imgRemoveCliente.setVisibility(View.INVISIBLE);
+           edtSetor.setEnabled(false);
         }else{
             imgRemoveCliente.setVisibility(View.VISIBLE);
+            edtSetor.setEnabled(true);
         }
         if(edtSetor.getText().length()==0){
             imgRemoveSetor.setVisibility(View.INVISIBLE);
