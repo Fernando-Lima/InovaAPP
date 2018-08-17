@@ -7,36 +7,40 @@
 
     <include layout="@layout/content_tarefa" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_tarefa_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="160dp"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:visibility="invisible"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_menu_manage" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_tarefa_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="90dp"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:visibility="invisible"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_menu_share" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_tarefa"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu_tarefa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
+        app:fab_addButtonColorPressed="#ffffff"
+        app:fab_addButtonColorNormal="@color/app_blue"
+        app:fab_labelStyle="@style/fab_menu_labe_style">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_menu_tarefa_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="90dp"
+            app:fab_icon="@drawable/ic_arrow_upward_black"
+            app:fab_size="normal"
+            app:fab_title="Iniciar tarefa"
+            app:fab_colorNormal="#31ba07"
+            android:layout_marginRight="@dimen/fab_margin" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_menu_tarefa_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="160dp"
+            app:fab_icon="@drawable/ic_report_problem_black"
+            app:fab_colorNormal="#b60606"
+            app:fab_size="normal"
+            app:fab_title="Reportar problema"
+            android:layout_marginRight="@dimen/fab_margin"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -17,13 +17,16 @@ import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class TarefaActivity extends Debug implements View.OnClickListener {
 
     private Boolean isFabOpen = false;
-    private FloatingActionButton fab, fab1, fab2;
+    private FloatingActionsMenu fabMenu;
+    private com.getbase.floatingactionbutton.FloatingActionButton fab_menu1, fab_menu2;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
     private EditText edtDate, edtTime, edtCliente,
             edtTipo, edtDesricao, edtSituacao;
@@ -56,9 +59,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         setTime();
         edtSituacao.setEnabled(false);
 
-        fab.setOnClickListener(this);
-        fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
+
 
     }
 
@@ -66,17 +67,14 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.fab_tarefa:
-                animateFAB();
-                Log.i("fab","clicou em fab");
+            case R.id.fab_menu_tarefa:
+               Toast.makeText(this,"FAB",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.fab_tarefa_1:
-
-                Log.d("fab", "Fab 1");
+            case R.id.fab_menu_tarefa_1:
+                Toast.makeText(this,"FAB1",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.fab_tarefa_2:
-
-                Log.d("fab", "Fab 2");
+            case R.id.fab_menu_tarefa_2:
+                Toast.makeText(this,"FAB2",Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -85,21 +83,13 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
         if (isFabOpen) {
 
-            fab.startAnimation(rotate_backward);
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
-            fab1.setClickable(false);
-            fab2.setClickable(false);
+
             isFabOpen = false;
             Log.d("Raj", "close");
 
         } else {
 
-            fab.startAnimation(rotate_forward);
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
-            fab1.setClickable(true);
-            fab2.setClickable(true);
+
             isFabOpen = true;
             Log.d("Raj", "open");
 
@@ -125,10 +115,10 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-        calendar.set(Calendar.YEAR,year);
-        calendar.set(Calendar.MONTH,month);
-        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        setDate();
+            calendar.set(Calendar.YEAR,year);
+            calendar.set(Calendar.MONTH,month);
+            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+            setDate();
         }
     };
 
@@ -145,9 +135,9 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     private TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker timePicker, int hour, int min) {
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, min);
-        setTime();
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, min);
+            setTime();
         }
     };
     public void hideKeyboard(){
@@ -167,10 +157,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
         imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
-
-        fab = (FloatingActionButton)findViewById(R.id.fab_tarefa);
-        fab1 = (FloatingActionButton)findViewById(R.id.fab_tarefa_1);
-        fab2 = (FloatingActionButton)findViewById(R.id.fab_tarefa_2);
 
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
@@ -200,7 +186,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
     public void showImg(){
         if(edtCliente.getText().length()==0){
-           imgRemoveCliente.setVisibility(View.INVISIBLE);
+            imgRemoveCliente.setVisibility(View.INVISIBLE);
         }else{
             imgRemoveCliente.setVisibility(View.VISIBLE);
         }
