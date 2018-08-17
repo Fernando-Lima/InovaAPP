@@ -2,15 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_tarefa_iniciar"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Iniciar Atividade"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_tarefa_settings"
+        android:id="@+id/action_tarefa_problema"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"
-        />
+        android:title="Reportar problema"
+        app:showAsAction="never" />
 
 </menu>

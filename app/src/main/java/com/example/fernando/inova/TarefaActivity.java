@@ -6,24 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import android.support.v7.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class TarefaActivity extends Debug implements View.OnClickListener {
 
-    private Boolean isFabOpen = false;
-    private FloatingActionsMenu fabMenu;
-    private FloatingActionButton fab_1, fab_2;
     private EditText edtDate, edtTime, edtCliente,
             edtTipo, edtDesricao, edtSituacao;
     private int year, month, day, hour, min;
@@ -54,27 +50,18 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         min = calendar.get(Calendar.MINUTE);
         setTime();
         edtSituacao.setEnabled(false);
-
-        fabMenu.setOnClickListener(this);
-        fab_1.setOnClickListener(this);
-        fab_2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.fab_menu_tarefa:
-               Toast.makeText(this,"FAB",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.fab_menu_tarefa_1:
-                Toast.makeText(this,"FAB1",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.fab_menu_tarefa_2:
-                Toast.makeText(this,"FAB2",Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tarefa, menu);
+        return true;
+    }
+
 
     @Override
     protected void onResume() {
@@ -128,6 +115,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     }
 
     public void findViewById(){
+
         edtDate = (EditText)findViewById(R.id.edt_date_tarefa);
         edtTime = (EditText)findViewById(R.id.edt_time_tarefa);
         edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
@@ -137,10 +125,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
         imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
-
-        fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu_tarefa);
-        fab_1 = (FloatingActionButton)findViewById(R.id.fab_menu_tarefa_1);
-        fab_2 = (FloatingActionButton)findViewById(R.id.fab_menu_tarefa_2);
 
     }
     public void selecionarCliente(View view){

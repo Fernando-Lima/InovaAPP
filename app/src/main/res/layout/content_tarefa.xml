@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Localização"/>
+            android:hint="Rua Otilia Bittencourt Haro 2965 Catanduvas SC"/>
 
     </RelativeLayout>
 

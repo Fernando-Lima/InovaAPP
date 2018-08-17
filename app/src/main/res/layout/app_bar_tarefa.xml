@@ -7,40 +7,4 @@
 
     <include layout="@layout/content_tarefa" />
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu_tarefa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:fab_addButtonColorPressed="#ffffff"
-        app:fab_addButtonColorNormal="@color/app_blue"
-        app:fab_labelStyle="@style/fab_menu_labe_style">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_menu_tarefa_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="90dp"
-            android:layout_marginRight="@dimen/fab_margin"
-            app:fab_colorNormal="#31ba07"
-            app:fab_icon="@android:drawable/ic_media_play"
-            app:fab_size="normal"
-            app:fab_title="Iniciar tarefa" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_menu_tarefa_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="160dp"
-            android:layout_marginRight="@dimen/fab_margin"
-            app:fab_colorNormal="#ed2424"
-            app:fab_icon="@android:drawable/ic_dialog_alert"
-            app:fab_size="normal"
-            app:fab_title="Reportar problema"/>
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
 </android.support.design.widget.CoordinatorLayout>
