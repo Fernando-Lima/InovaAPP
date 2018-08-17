@@ -23,11 +23,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="90dp"
-            app:fab_icon="@drawable/ic_arrow_upward_black"
-            app:fab_size="normal"
-            app:fab_title="Iniciar tarefa"
+            android:layout_marginRight="@dimen/fab_margin"
             app:fab_colorNormal="#31ba07"
-            android:layout_marginRight="@dimen/fab_margin" />
+            app:fab_icon="@android:drawable/ic_media_play"
+            app:fab_size="normal"
+            app:fab_title="Iniciar tarefa" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_menu_tarefa_1"
@@ -35,11 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="160dp"
-            app:fab_icon="@drawable/ic_report_problem_black"
-            app:fab_colorNormal="#b60606"
+            android:layout_marginRight="@dimen/fab_margin"
+            app:fab_colorNormal="#ed2424"
+            app:fab_icon="@android:drawable/ic_dialog_alert"
             app:fab_size="normal"
-            app:fab_title="Reportar problema"
-            android:layout_marginRight="@dimen/fab_margin"/>
+            app:fab_title="Reportar problema"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

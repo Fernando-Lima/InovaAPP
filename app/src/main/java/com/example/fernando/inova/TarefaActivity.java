@@ -5,18 +5,15 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.text.SimpleDateFormat;
@@ -26,8 +23,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
     private Boolean isFabOpen = false;
     private FloatingActionsMenu fabMenu;
-    private com.getbase.floatingactionbutton.FloatingActionButton fab_menu1, fab_menu2;
-    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
+    private FloatingActionButton fab_1, fab_2;
     private EditText edtDate, edtTime, edtCliente,
             edtTipo, edtDesricao, edtSituacao;
     private int year, month, day, hour, min;
@@ -59,8 +55,9 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         setTime();
         edtSituacao.setEnabled(false);
 
-
-
+        fabMenu.setOnClickListener(this);
+        fab_1.setOnClickListener(this);
+        fab_2.setOnClickListener(this);
     }
 
     @Override
@@ -76,23 +73,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
             case R.id.fab_menu_tarefa_2:
                 Toast.makeText(this,"FAB2",Toast.LENGTH_SHORT).show();
                 break;
-        }
-    }
-
-    public void animateFAB() {
-
-        if (isFabOpen) {
-
-
-            isFabOpen = false;
-            Log.d("Raj", "close");
-
-        } else {
-
-
-            isFabOpen = true;
-            Log.d("Raj", "open");
-
         }
     }
 
@@ -158,10 +138,10 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
         imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
 
-        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+        fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu_tarefa);
+        fab_1 = (FloatingActionButton)findViewById(R.id.fab_menu_tarefa_1);
+        fab_2 = (FloatingActionButton)findViewById(R.id.fab_menu_tarefa_2);
+
     }
     public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
