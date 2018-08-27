@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -141,7 +140,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
         startActivityForResult(it, REQUEST_CODE);
-        showImg();
+        //showImg();
     }
 
     public void selecionarTipo(View view){
@@ -161,25 +160,34 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
     public void showImg(){
         if(edtCliente.getText().length()==0){
-            imgRemoveCliente.setVisibility(View.INVISIBLE);
+            //imgRemoveCliente.setVisibility(View.INVISIBLE);
+            imgRemoveCliente.setBackground(this.getDrawable(R.drawable.ic_add_black));
         }else{
-            imgRemoveCliente.setVisibility(View.VISIBLE);
+            imgRemoveCliente.setBackground(this.getDrawable(R.drawable.ic_close_black));
         }
         if(edtTipo.getText().length()==0){
-            imgRemoveTipo.setVisibility(View.INVISIBLE);
+            //imgRemoveTipo.setVisibility(View.INVISIBLE);
+            imgRemoveTipo.setBackground(this.getDrawable(R.drawable.ic_add_black));
         }else{
-            imgRemoveTipo.setVisibility(View.VISIBLE);
+            imgRemoveTipo.setBackground(this.getDrawable(R.drawable.ic_close_black));
         }
     }
-    public void clearTvCliente(View view){
-        edtCliente.setText("");
-        // limpar o id do cliente também
-        imgRemoveCliente.setVisibility(View.INVISIBLE);
+    public void onClickCliente(View view){
+        if(edtCliente.getText().length() == 0){
+            selecionarCliente(view);
+        }else {
+            edtCliente.setText("");
+            showImg();
+        }
     }
-    public void clearTvTipo(View view){
-        edtTipo.setText("");
-        // limpar o id do tipo também
-        imgRemoveTipo.setVisibility(View.INVISIBLE);
+    public void onClickTipo(View view){
+        if(edtTipo.getText().length()==0){
+            selecionarTipo(view);
+        }else{
+            edtTipo.setText("");
+            showImg();
+        }
+
     }
     public void goMaps(View view){
         //abrir google maps com o endereço de destino

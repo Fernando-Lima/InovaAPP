@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -66,7 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="selecionarCliente"
             android:inputType="textPersonName" />
 
         <ImageButton
@@ -76,9 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:onClick="clearTvCliente"
-            android:background="@android:drawable/ic_menu_close_clear_cancel"
-            android:backgroundTint="@color/black" />
+            android:onClick="onClickCliente" />
 
 
     </RelativeLayout>
@@ -98,7 +96,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="selecionarTipo"
             android:inputType="textPersonName" />
 
         <ImageButton
@@ -108,17 +105,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:onClick="clearTvTipo"
-            android:background="@android:drawable/ic_menu_close_clear_cancel"
-            android:backgroundTint="@color/black" />
+            android:onClick="onClickTipo" />
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_descricao_tarefa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrição" />
+        android:text="Detalhe" />
+
 
     <EditText
         android:id="@+id/edt_descricao_tarefa"
@@ -145,7 +140,7 @@
         android:id="@+id/tv_endereco_tarefa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Endereco" />
+        android:text="Endereço" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -153,23 +148,25 @@
 
         <ImageButton
             android:id="@+id/img_local_tarefa"
-            style="@android:style/Widget.Material.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:onClick="goMaps"
             android:layout_alignParentTop="true"
-            android:background="@drawable/ic_place_black"
-            android:backgroundTint="@color/black"
-            android:onClick="goMaps" />
+            android:backgroundTint="@color/transparent"
+            app:srcCompat="@drawable/ic_place_black" />
 
         <EditText
-            android:id="@+id/edt_endereco_tarefa"
-            android:layout_width="match_parent"
+            android:id="@+id/edt_local_tarefa"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Rua Otilia Bittencourt Haro 2965 Catanduvas SC"/>
-
+            android:hint="Rua Otilia Bittencourt Haro 2965 "
+            android:layout_alignBottom="@+id/img_local_tarefa"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_toStartOf="@+id/img_local_tarefa" />
     </RelativeLayout>
 
 
