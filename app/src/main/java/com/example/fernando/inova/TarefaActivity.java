@@ -22,6 +22,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
 
     private EditText edtDate, edtTime, edtCliente,
             edtTipo, edtDesricao, edtSituacao;
+    private MenuItem m1, m2;
     private int year, month, day, hour, min;
     private ImageButton imgRemoveCliente, imgRemoveTipo;
     private int REQUEST_CODE = 1;
@@ -50,6 +51,7 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         min = calendar.get(Calendar.MINUTE);
         setTime();
         edtSituacao.setEnabled(false);
+
     }
 
     @Override
@@ -59,6 +61,12 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.tarefa, menu);
+
+        m1 = menu.findItem(R.id.action_tarefa_iniciar);
+        m2 = menu.findItem(R.id.action_tarefa_problema);
+
+        m1.setVisible(false);
+        m2.setVisible(false);
         return true;
     }
 
