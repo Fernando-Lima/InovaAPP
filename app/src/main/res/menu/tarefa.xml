@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_tarefa_done"
+        android:icon="@drawable/ic_done_black"
+        android:orderInCategory="100"
+        android:title="Done"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_tarefa_iniciar"
         android:orderInCategory="100"
         android:title="Iniciar Atividade"
@@ -11,10 +17,4 @@
         android:orderInCategory="100"
         android:title="Reportar problema"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_tarefa_done"
-        android:orderInCategory="200"
-        android:title="Done"
-        android:icon="@drawable/ic_done_black"
-        app:showAsAction="always" />
 </menu>

@@ -31,13 +31,24 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".CadTarefaActivity" />
-        <activity
-            android:name=".TarefaActivity" />
+        <activity android:name=".TarefaActivity"
+            android:label="Atendimento"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".ClienteActivity"
             android:label="Cliente" />
-        <activity android:name=".SetorActivity"
-            android:label="Setor"></activity>
+        <activity
+            android:name=".SetorActivity"
+            android:label="Setor" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            ></activity>
     </application>
 
 </manifest>
