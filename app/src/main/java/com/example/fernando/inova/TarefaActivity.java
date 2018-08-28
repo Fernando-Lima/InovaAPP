@@ -9,23 +9,28 @@ import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class TarefaActivity extends Debug implements View.OnClickListener {
+public class TarefaActivity extends Debug{
 
-    private EditText edtDate, edtTime, edtCliente,
-            edtTipo, edtDesricao, edtSituacao;
+    private EditText edtDate, edtTime, edtCliente,  edtDesricao, edtSituacao;
     private MenuItem m1, m2;
     private int year, month, day, hour, min;
     private ImageButton imgRemoveCliente, imgRemoveTipo;
     private int REQUEST_CODE = 1;
+    private Spinner spinner;
+    private String tipoTarefa[] = {"Instalação", "Manutenção", "Visita"};
+    ArrayAdapter<String> arrayAdapter;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm ");
@@ -51,11 +56,31 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         min = calendar.get(Calendar.MINUTE);
         setTime();
         edtSituacao.setEnabled(false);
-
+        spinnerAdapter();
     }
 
-    @Override
-    public void onClick(View v) {
+    public void spinnerAdapter(){
+        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,tipoTarefa);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -129,7 +154,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         edtDate.setInputType(InputType.TYPE_NULL);
         edtTime.setInputType(InputType.TYPE_NULL);
         edtCliente.setInputType(InputType.TYPE_NULL);
-        edtTipo.setInputType(InputType.TYPE_NULL);
     }
 
     public void findViewById(){
@@ -137,13 +161,14 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         edtDate = (EditText)findViewById(R.id.edt_date_tarefa);
         edtTime = (EditText)findViewById(R.id.edt_time_tarefa);
         edtCliente = (EditText)findViewById(R.id.edt_cliente_tarefa);
-        edtTipo = (EditText)findViewById(R.id.edt_tipo_tarefa);
+
         edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
         edtSituacao = (EditText)findViewById(R.id.edt_situacao_tarefa);
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
-        imgRemoveTipo = (ImageButton)findViewById(R.id.img_remove_tipo_tarefa);
 
+
+        spinner = (Spinner)findViewById(R.id.spinner_tipo_tarefa);
     }
     public void selecionarCliente(View view){
         Intent it = new Intent(TarefaActivity.this, ClienteActivity.class);
@@ -173,12 +198,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
         }else{
             imgRemoveCliente.setBackground(this.getDrawable(R.drawable.ic_close_black));
         }
-        if(edtTipo.getText().length()==0){
-            //imgRemoveTipo.setVisibility(View.INVISIBLE);
-            imgRemoveTipo.setBackground(this.getDrawable(R.drawable.ic_add_black));
-        }else{
-            imgRemoveTipo.setBackground(this.getDrawable(R.drawable.ic_close_black));
-        }
     }
     public void onClickCliente(View view){
         if(edtCliente.getText().length() == 0){
@@ -187,15 +206,6 @@ public class TarefaActivity extends Debug implements View.OnClickListener {
             edtCliente.setText("");
             showImg();
         }
-    }
-    public void onClickTipo(View view){
-        if(edtTipo.getText().length()==0){
-            selecionarTipo(view);
-        }else{
-            edtTipo.setText("");
-            showImg();
-        }
-
     }
     public void goMaps(View view){
         //abrir google maps com o endereço de destino
