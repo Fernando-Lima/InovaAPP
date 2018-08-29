@@ -209,6 +209,7 @@ public class TarefaActivity extends Debug{
         }
     }
     public void goMaps(View view){
-        //abrir google maps com o endereço de destino
+        Intent it  = new Intent(this, MapsActivity.class);
+        startActivity(it);
     }
 }
