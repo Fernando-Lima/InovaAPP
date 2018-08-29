@@ -4,9 +4,11 @@ import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +26,7 @@ import java.util.Calendar;
 
 public class TarefaActivity extends Debug{
 
-    private EditText edtDate, edtTime, edtCliente,  edtDesricao, edtSituacao;
+    private EditText edtDate, edtTime, edtCliente,  edtDesricao, edtSituacao, edtEndereco;
     private MenuItem m1, m2;
     private int year, month, day, hour, min;
     private ImageButton imgRemoveCliente, imgRemoveTipo;
@@ -165,6 +167,7 @@ public class TarefaActivity extends Debug{
 
         edtDesricao = (EditText)findViewById(R.id.edt_descricao_tarefa);
         edtSituacao = (EditText)findViewById(R.id.edt_situacao_tarefa);
+        edtEndereco = (EditText)findViewById(R.id.edt_endereco_tarefa);
 
         imgRemoveCliente = (ImageButton)findViewById(R.id.img_remove_cliente_tarefa);
 
@@ -209,7 +212,16 @@ public class TarefaActivity extends Debug{
         }
     }
     public void goMaps(View view){
-        Intent it  = new Intent(this, MapsActivity.class);
-        startActivity(it);
+        // Map point based on address
+        String endereco = edtEndereco.getText().toString();
+        Uri location = Uri.parse("geo:0,0?q="+endereco);
+// Or map point based on latitude/longitude
+// Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+        startActivity(mapIntent);
+
+        //Para abrir o maps dentro do aplicativo
+        //Intent intent = new Intent(this,MapsActivity.class);
+        //startActivity(intent);
     }
 }

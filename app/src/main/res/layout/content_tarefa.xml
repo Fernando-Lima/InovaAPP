@@ -140,10 +140,9 @@
             app:srcCompat="@drawable/ic_place_black" />
 
         <EditText
-            android:id="@+id/edt_local_tarefa"
+            android:id="@+id/edt_endereco_tarefa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Rua Otilia Bittencourt Haro 2965 "
             android:layout_alignBottom="@+id/img_local_tarefa"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
