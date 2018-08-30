@@ -1,5 +1,6 @@
 package com.example.fernando.inova.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,8 +23,13 @@ public class ClienteDAO {
     }
 
     public void salvar(Cliente cliente){
-
+        ContentValues values = new ContentValues();
+        values.put("nome", cliente.getNome());
+        values.put("endereco", cliente.getEndereco());
+        values.put("situacao",cliente.getSituacao());
+        dbCliente.insert("tbl_cliente",null,values);
     }
+
     public void excluir(Long id){
 
     }
