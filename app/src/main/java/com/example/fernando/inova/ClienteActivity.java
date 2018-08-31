@@ -5,8 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.fernando.inova.adapter.RecycleViewCliente;
+import com.example.fernando.inova.model.Cliente;
+import com.example.fernando.inova.service.HTTPService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ClienteActivity extends Debug {
     private RecyclerView recyclerView;
@@ -16,6 +23,20 @@ public class ClienteActivity extends Debug {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        HTTPService httpService = new HTTPService();
+        try {
+            Cliente cliente = httpService.execute().get();
+            Toast.makeText(this,"Cliente "+ cliente.getNome().toString(),Toast.LENGTH_SHORT).show();
+            clientes.add(cliente);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
 
         Intent it = new Intent();
         it.putExtra("key","teste de retorno Cliente");
@@ -23,7 +44,7 @@ public class ClienteActivity extends Debug {
 
         recyclerView = (RecyclerView)findViewById(R.id.recycleView_cliente);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecycleViewCliente(this, items));
+        recyclerView.setAdapter(new RecycleViewCliente(this, clientes));
 
     }
 }

@@ -11,18 +11,22 @@ import android.widget.TextView;
 
 import com.example.fernando.inova.R;
 import com.example.fernando.inova.SetorActivity;
+import com.example.fernando.inova.model.Cliente;
+
+import java.util.List;
 
 /**
  * Created by fernando on 13/08/18.
  */
 
 public class RecycleViewCliente extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    Context context;
-    String[]items;
+    private Context context;
+    private List<Cliente> clientes;
+    private Cliente cliente;
 
-    public RecycleViewCliente(Context context, String[]items){
+    public RecycleViewCliente(Context context, List<Cliente> clientes){
         this.context = context;
-        this.items = items;
+        this.clientes = clientes;
     }
 
     @NonNull
@@ -36,9 +40,10 @@ public class RecycleViewCliente extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        if(viewHolder instanceof Item){
+        if(clientes != null && clientes.size()>0){
             final Item item = (Item) viewHolder;
-            item.tvNome.setText(items[position]);
+            cliente = clientes.get(position);
+            item.tvNome.setText(cliente.getNome());
             item.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -51,7 +56,7 @@ public class RecycleViewCliente extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return items.length;
+        return clientes.size();
     }
 
     public static class Item extends RecyclerView.ViewHolder{

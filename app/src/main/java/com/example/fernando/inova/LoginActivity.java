@@ -98,15 +98,15 @@ public class LoginActivity extends Debug implements LoaderCallbacks<Cursor> {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        HTTPService httpService = new HTTPService();
-        try {
-            Usuario usuario = httpService.execute().get();
-            mEmailView.setText(usuario.getEmail().toString());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+//        HTTPService httpService = new HTTPService();
+//        try {
+//            Usuario usuario = httpService.execute().get();
+//            mEmailView.setText(usuario.getEmail().toString());
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void populateAutoComplete() {
