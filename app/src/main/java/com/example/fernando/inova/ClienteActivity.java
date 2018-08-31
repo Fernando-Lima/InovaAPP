@@ -23,19 +23,16 @@ public class ClienteActivity extends Debug {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-        List<Cliente> clientes = new ArrayList<Cliente>();
-
+        //Conexão com webservice
         HTTPService httpService = new HTTPService();
+        List<Cliente> clientes = null;
         try {
-            Cliente cliente = httpService.execute().get();
-            Toast.makeText(this,"Cliente "+ cliente.getNome().toString(),Toast.LENGTH_SHORT).show();
-            clientes.add(cliente);
+            clientes = httpService.execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
 
 
         Intent it = new Intent();

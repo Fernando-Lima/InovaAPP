@@ -10,21 +10,22 @@ import java.net.MalformedURLException;
 
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 /**
  * Created by fernando on 03/08/18.
  */
-public class HTTPService extends AsyncTask<Void, Void, Cliente> {
+public class HTTPService extends AsyncTask<Void, Void, List<Cliente>> {
 
     private URL url;
     ConectaWS conectaWS = new ConectaWS();
 
     @Override
-    protected Cliente doInBackground(Void... voids) {
+    protected List<Cliente> doInBackground(Void... voids) {
         StringBuilder resposta = new StringBuilder();
         try {
-            url = new URL("https://aw-inova.cfapps.io/cliente/2");
+            url = new URL("https://aw-inova.cfapps.io/cliente");
             String uri = url.toString();
             HttpURLConnection connection = conectaWS.getConnection(uri, "GET");
             connection.connect();
@@ -37,7 +38,7 @@ public class HTTPService extends AsyncTask<Void, Void, Cliente> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Cliente cliente = new Gson().fromJson(resposta.toString(),Cliente.class);
-        return cliente;
+        List<Cliente> clientes = Arrays.asList( new Gson().fromJson(resposta.toString(),Cliente[].class));
+        return clientes;
     }
 }
